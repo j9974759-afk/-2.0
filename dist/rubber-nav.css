@@ -1,0 +1,13 @@
+/* RubberSegment adapted to the portfolio's anchor navigation. */
+.nav.rubber-nav{position:relative;isolation:isolate;touch-action:pan-y;user-select:none}
+.nav.rubber-nav a{position:relative;z-index:1;background:transparent;transition:color .16s,opacity .16s}
+.nav.rubber-nav a:hover{background:transparent;color:#465b97}
+.nav.rubber-nav a.active{background:transparent;color:#344777}
+/* The floating header must not paint a second pill behind individual links. */
+.header .nav.rubber-nav a,
+.header.is-floating .nav.rubber-nav a.active,
+.header.is-floating .nav.rubber-nav a:hover{background:transparent}
+.nav.rubber-nav a:focus-visible{outline:2px solid #8e99eb;outline-offset:1px}
+.rubber-nav-thumb{position:absolute;pointer-events:none;border-radius:40px;background:linear-gradient(120deg,#edceff,#b7d5ff);z-index:0}
+.nav.rubber-nav a.active{cursor:grab}
+.nav.rubber-nav.is-dragging,.nav.rubber-nav.is-dragging a{cursor:grabbing}

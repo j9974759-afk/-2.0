@@ -1,0 +1,95 @@
+/* Original 2048 × 1152 PSD composition, with independent depth planes. */
+.dream-intro{height:100svh;position:relative;background:#ccddfa;z-index:10}
+.dream-stage{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate;background:#ccddfa}
+.dream-camera{position:absolute;left:50%;top:50%;width:max(100vw,177.778svh);height:max(56.25vw,100svh);transform:translate(-50%,-50%);pointer-events:none}
+.landing-layer,.portal-light{position:absolute;max-width:none;pointer-events:none;transform-origin:50% 50%;will-change:transform}
+.portal-light{background:linear-gradient(150deg,#fff8ff,#f5eaff 45%,#edfbff);box-shadow:0 0 70px 30px #fff9;}
+.portal-video{object-fit:fill;mix-blend-mode:screen}
+.landing-ip{overflow:visible}.landing-ip .ip-poster{width:100%;height:100%;object-fit:fill}
+.landing-ip video{position:absolute;left:-51.705%;top:-12.46%;width:204.546%;height:124.568%;max-width:none;object-fit:fill;opacity:0;pointer-events:none}
+.landing-ip.idle-ready .ip-idle{opacity:1}.landing-ip.idle-ready .ip-poster{opacity:0}
+.landing-ip.turning .ip-idle{opacity:0}.landing-ip.turning .ip-turn{opacity:1}
+.dream-topline{position:absolute;inset:30px 4.5% auto;display:flex;justify-content:space-between;align-items:center;z-index:4;color:#414c83}
+.dream-signature{font-size:23px;font-weight:750;letter-spacing:-.7px}.dream-signature span{font-size:14px;font-weight:500;letter-spacing:.5px;margin-left:7px}
+.dream-skip{font-size:14px;border:1px solid #fff9;background:#ffffff69;padding:11px 18px;border-radius:30px;backdrop-filter:blur(10px)}.dream-skip:hover{background:#fff}
+.dream-invitation{position:absolute;bottom:3.5%;left:4%;right:4%;z-index:4;text-align:center;color:#51498a;display:flex;align-items:center;flex-direction:column;text-shadow:0 2px 18px #fff}
+.dream-overline{font-size:12px;letter-spacing:.25em;font-weight:650;margin-bottom:10px}
+.dream-invitation h1{font-family:Arial,sans-serif;font-weight:500;font-size:clamp(35px,5.1vw,90px);letter-spacing:-.045em;line-height:1.08;margin:0 0 14px;color:white;text-shadow:0 2px 12px #7477a560,0 1px 1px #7079aa}
+.dream-caption{font-size:16px;letter-spacing:.34em}.dream-scroll-line{width:1px;height:30px;margin-top:15px;background:#65578b75;transform-origin:top;animation:invite-line 2.3s ease-in-out infinite}
+@keyframes invite-line{0%,100%{transform:scaleY(.6);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.mobile-break{display:none}.dream-mist{position:absolute;inset:0;background:#f4f3ff;opacity:0;pointer-events:none;z-index:2}
+.dream-cloud-transition{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;z-index:3}
+.dream-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:#ffffff20;z-index:5}.dream-progress span{display:block;width:100%;height:100%;background:#a4a0dc;transform:scaleX(0);transform-origin:left}
+body.landing-active .dream-intro{height:300svh;pointer-events:none}
+body.landing-active .dream-topline,body.landing-active .dream-invitation{pointer-events:auto}
+body.landing-active main{position:relative;z-index:1;margin-top:-100svh}
+body.landing-active .header{top:calc(200svh + 20px);z-index:3}
+body:not(.landing-active) .header{top:calc(100svh + 20px)}
+.dream-stage.is-complete{visibility:hidden}
+body.landing-active .hero-type,body.landing-active .hero-copy,body.landing-active .hero-character{will-change:transform,opacity}
+.scene-reveal.from-left,.scene-reveal.from-right,.scene-reveal.timeline-step{translate:0 42px}
+.scene-reveal.is-visible{translate:0 0}
+@media(max-width:700px){
+ .dream-camera{width:177.778svh;height:100svh;left:43%}
+ .dream-topline{inset:22px 6% auto}.dream-signature{font-size:20px}.dream-signature span{display:none}
+ .dream-invitation{bottom:5%}.dream-invitation h1{font-size:clamp(38px,9.5vw,65px)}.mobile-break{display:block}
+ .dream-overline{font-size:12px;letter-spacing:.18em}.dream-caption{font-size:14px;letter-spacing:.2em}
+ .dream-scroll-line{height:24px}.dream-skip{font-size:14px;padding:10px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.landing-active .dream-intro{height:100svh}body.landing-active main{margin-top:0}body.landing-active .header{top:calc(100svh + 20px)}
+ .dream-scroll-line{animation:none}.landing-ip video,.portal-video,.dream-cloud-transition{display:none}.landing-ip.idle-ready .ip-poster{opacity:1}
+}
+/* Preserve the square video canvas rather than stretching the character. */
+.landing-ip video{left:-25.3%;width:151.3%}
+.dream-intro{background:transparent}
+.dream-cloud-transition{mix-blend-mode:screen}
+@media(max-width:700px){
+ .dream-stage::before{content:'';position:absolute;inset:0;background:url('assets/landing/layer-1.webp') center/cover;opacity:var(--scene-alpha,1)}
+ .dream-camera{width:130svh;height:73.125svh;left:calc(50% - 10svh);top:46%}
+ .dream-invitation{bottom:5%}
+}
+@media(max-width:700px){
+ .dream-camera{mask-image:linear-gradient(to bottom,transparent,black 9%,black 83%,transparent 100%)}
+ .dream-camera .layer-1{visibility:hidden}
+}
+/* Contain the existing portfolio's decorative overflow on narrow screens. */
+@media(max-width:700px){body.landing-active main{overflow-x:clip}}
+
+/* Independent translate/rotate leave the scroll-driven transform untouched. */
+.dream-camera :is(.layer-3,.layer-11,.layer-13,.layer-19,.layer-30){
+ animation:landing-cloud-float 11s ease-in-out infinite;animation-delay:-3s;
+}
+.dream-camera :is(.layer-9,.layer-12,.layer-14,.layer-15,.layer-16,.layer-17,.layer-18,.layer-22,.layer-27,.layer-28){
+ animation:landing-trinket-float 7s ease-in-out infinite;animation-delay:-2s;
+}
+.dream-camera :is(.layer-21,.layer-23,.layer-25,.layer-26,.layer-29){
+ animation:landing-bubble-float 9s ease-in-out infinite;animation-delay:-4s;
+}
+.dream-camera :is(.layer-11,.layer-16,.layer-23,.layer-27){animation-delay:-5.5s;animation-duration:9s}
+.dream-camera :is(.layer-9,.layer-13,.layer-18,.layer-25){animation-delay:-1.5s;animation-duration:8s}
+.dream-camera :is(.layer-14,.layer-19,.layer-26,.layer-28){animation-delay:-7s;animation-duration:12s}
+@keyframes landing-cloud-float{0%,100%{translate:-3px 3px}50%{translate:5px -5px}}
+@keyframes landing-trinket-float{0%,100%{translate:0 4px;rotate:-3deg}50%{translate:3px -7px;rotate:4deg}}
+@keyframes landing-bubble-float{0%,100%{translate:-4px 5px;rotate:-2deg}50%{translate:5px -10px;rotate:2deg}}
+.dream-stage.ambient-paused .landing-layer{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.dream-camera .landing-layer{animation:none}}
+
+
+/* Keep the existing capsule navigation floating over the portfolio. */
+body.landing-active .header.is-floating{
+ position:fixed;top:max(20px,env(safe-area-inset-top));z-index:40;
+}
+.header.is-floating :is(.brand,.nav,.nav-contact){
+ background:rgba(244,248,255,.58);
+ border:1px solid rgba(255,255,255,.82);
+ -webkit-backdrop-filter:blur(24px) saturate(145%);
+ backdrop-filter:blur(24px) saturate(145%);
+ box-shadow:0 8px 28px rgba(72,87,141,.12),inset 0 1px 0 rgba(255,255,255,.65);
+}
+.header.is-floating .nav a.active,.header.is-floating .nav a:hover{background:linear-gradient(120deg,#e8ccf8b8,#b8d5ffc4)}
+html.nav-floating{scroll-padding-top:var(--portfolio-nav-offset,104px)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .header.is-floating :is(.brand,.nav,.nav-contact){background:rgba(244,248,255,.95)}
+}
+@media(max-width:600px){body.landing-active .header.is-floating{top:max(12px,env(safe-area-inset-top))}}

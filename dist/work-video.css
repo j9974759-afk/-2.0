@@ -1,0 +1,7 @@
+
+/* Each published work has its own player and caption container. */
+.detail-body .work-video-card{margin:18px 0 26px;padding:16px;border:1px solid #dce4f5;border-radius:12px;background:#f4f7ff;box-shadow:0 5px 18px #8b9dcb12}
+.work-video-frame{width:100%;aspect-ratio:16 / 9;background:#171923;border-radius:8px;overflow:hidden}
+.detail-body .work-video-frame video{display:block;width:100%;height:100%;max-height:none;object-fit:contain;border-radius:0;margin:0;background:transparent}
+.detail-body .work-video-card .video-caption{margin:12px 2px 0;font-size:14px;line-height:1.5;color:#5d729f}
+@media(max-width:600px){.detail-body .work-video-card{padding:10px;margin:15px 0 20px}.detail-body .work-video-card .video-caption{font-size:13px}}

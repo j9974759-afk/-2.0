@@ -1,0 +1,79 @@
+/* Dreamy / Soft Motion: environment, scene entrances, interaction. */
+.motion-character{aspect-ratio:1;isolation:isolate}
+.motion-character>img,.motion-character>video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:contain;transform:none!important}
+.motion-character>video{opacity:0;pointer-events:none}.motion-character.has-video>video{opacity:1}.motion-character.has-video>img{visibility:hidden}
+.skills-visual .motion-character{position:absolute;width:430px;left:50%;bottom:-5px;transform:translateX(-50%)}.contact-portrait .motion-character{width:100%;position:relative}
+.hero::before{translate:var(--mx,0px) var(--my,0px);transition:translate .8s ease-out}.dream-opening::before{animation:dream-light .5s ease-out both}
+@keyframes dream-light{from{opacity:.25;filter:blur(12px) brightness(.85)}to{opacity:1;filter:blur(5px) brightness(1)}}
+.hero-guide{translate:var(--mx,0px) var(--my,0px);transition:translate .8s ease-out}.hero-guide.in-scene>img,.hero-guide.in-scene>video{animation:toy-float 7s ease-in-out infinite;transform-origin:50% 80%}
+@keyframes toy-float{0%,100%{translate:0 0;rotate:-.25deg}50%{translate:0 -6px;rotate:.25deg}}
+.hero-play,.hero-audio{margin-left:var(--mx,0px);margin-top:var(--my,0px);transition:margin .8s ease-out}
+/* Offset the glass decorations into the open spaces marked in the reference. */
+@media(min-width:601px){
+  .hero .hero-play{top:39%;left:29%}
+  .hero .hero-audio{top:78%;right:7%}
+}
+.hero .hero-play{animation:glass-play-float 7s ease-in-out infinite}
+.hero .hero-audio{animation:glass-audio-float 8.5s ease-in-out -2.8s infinite}
+@keyframes glass-play-float{
+  0%,100%{transform:translate3d(0,0,0) rotate(-9deg)}
+  50%{transform:translate3d(4px,-18px,0) rotate(-5deg)}
+}
+@keyframes glass-audio-float{
+  0%,100%{transform:translate3d(0,0,0) rotate(7deg)}
+  50%{transform:translate3d(-5px,-16px,0) rotate(3deg)}
+}
+.dream-environment{position:absolute;inset:0;z-index:2;pointer-events:none;translate:var(--mx,0px) var(--my,0px);transition:translate .8s ease-out}
+.dream-cloud{position:absolute;width:230px;height:70px;background:radial-gradient(ellipse,#fff9,transparent 70%);filter:blur(14px);animation:cloud-drift 12s ease-in-out infinite}.cloud-one{top:23%;left:7%}.cloud-two{top:14%;right:8%;animation-delay:-6s;opacity:.7}
+@keyframes cloud-drift{50%{translate:22px 0}}
+.dream-bubble{position:absolute;width:32px;height:32px;border:1px solid #fff9;border-radius:50%;background:radial-gradient(circle at 28% 22%,#fff9,transparent 25%),linear-gradient(140deg,#ecd4ff33,#b6eaff22);box-shadow:inset -3px -3px 8px #c8b5ee33;bottom:5%;left:17%;animation:bubble-rise 12s linear infinite;translate:var(--mx,0px) var(--my,0px);transition:translate .8s}.bubble-1{left:82%;width:22px;height:22px;animation-delay:-4s}.bubble-2{left:47%;width:14px;height:14px;animation-delay:-8s}
+@keyframes bubble-rise{0%{transform:translateY(0);opacity:0}15%,75%{opacity:.65}100%{transform:translate(15px,-330px);opacity:0}}
+.dream-star{position:absolute;color:#fffc;font-size:23px;animation:star-glow 8s ease-in-out infinite;top:28%;left:42%}.star-two{top:42%;left:89%;font-size:15px;animation-delay:-4s}
+@keyframes star-glow{0%,35%,65%,100%{opacity:.3;scale:.8}50%{opacity:1;scale:1.12}}
+.scene-reveal{opacity:0;transition:opacity .65s ease,translate .65s cubic-bezier(.2,.75,.25,1),scale .7s cubic-bezier(.2,.75,.25,1);transition-delay:var(--delay,0ms)}
+.rise-in,.project-enter{translate:0 25px}.from-left{translate:-32px 0}.from-right,.timeline-step{translate:30px 0}.guide-peek{translate:0 45px;scale:.9}.guide-grow{scale:.8}.contact-peek{translate:0 65px}.scene-reveal.is-visible{opacity:1;translate:0 0;scale:1}
+.timeline-step::before{scale:0;transition:scale .4s cubic-bezier(.2,1.5,.4,1);transition-delay:var(--delay,0ms)}.timeline-step::after{scale:1 0;transform-origin:top;transition:scale .65s ease;transition-delay:calc(var(--delay,0ms) + 100ms);background:linear-gradient(#a8b9f4,#eaf0fc)}.timeline-step.is-visible::before,.timeline-step.is-visible::after{scale:1}
+.project-card{transition:transform .5s cubic-bezier(.2,.75,.25,1),scale .5s,translate .65s,opacity .65s,box-shadow .5s;transition-delay:0s}.project-card:is(:hover,:focus-visible){transform:rotate(0deg);scale:1.04;translate:0 -8px;box-shadow:0 24px 50px #8598cc45;z-index:6}
+.project-image>img{transition:transform .65s}.project-card:is(:hover,:focus-visible) .project-image>img{transform:scale(1.055)}.project-type{transition:translate .4s}.project-card:is(:hover,:focus-visible) .project-type{translate:0 -4px}
+.video-badge,.project-open{z-index:2;transition:scale .4s cubic-bezier(.2,1.4,.4,1),translate .4s;scale:.92}.project-card:is(:hover,:focus-visible) :is(.video-badge,.project-open){scale:1.05;translate:0 -3px}
+.project-preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;pointer-events:none;background:#e8eeff}.previewing .project-preview{opacity:1}
+.skills-guide.in-scene.has-video>video{animation:button-breathe 8s ease-in-out infinite;transform-origin:50% 55%}@keyframes button-breathe{50%{scale:1.012}}
+.skill-icon{transition:transform .5s,filter .4s}.micro-lightning:hover .skill-icon{animation:lightning-glint .65s ease-out}@keyframes lightning-glint{40%{filter:brightness(1.5) drop-shadow(0 0 8px #b8bbff);scale:1.08}}.micro-code:hover .skill-icon{transform:scaleX(1.12)}.micro-cube:hover .skill-icon{transform:perspective(180px) rotateY(22deg) rotateX(-10deg)}.micro-spark:hover .skill-icon{transform:rotate(65deg) scale(1.06)}
+.contact-guide{transition:rotate .55s,scale .55s;transform-origin:50% 85%}.contact-guide.acknowledge{rotate:3deg;scale:1.025}.contact-copy .button{position:relative;isolation:isolate}.contact-ripple{position:absolute;inset:-3px;border:2px solid #b0a4ff;border-radius:inherit;pointer-events:none;animation:contact-ripple .75s ease-out forwards}@keyframes contact-ripple{to{scale:1.35;opacity:0}}
+.button span,.nav-contact span{display:inline-block;transition:translate .3s}.button:hover span,.nav-contact:hover span{translate:3px -2px}
+ dialog[open]{animation:dialog-arrive .35s ease-out}@keyframes dialog-arrive{from{opacity:0;translate:0 15px}to{opacity:1;translate:0 0}}
+.motion-paused *,.motion-paused *::before,.scene-paused *{animation-play-state:paused!important}
+@media(max-width:1150px){.skills-visual .motion-character{width:370px}}@media(max-width:800px){.skills-visual .motion-character{width:320px}}@media(max-width:600px){.skills-visual .motion-character{width:300px;bottom:-55px}.dream-cloud{width:140px}.dream-bubble{width:20px;height:20px}.project-card:is(:hover,:focus-visible){scale:1.015}.dream-star{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.scene-reveal{opacity:1;translate:none;scale:1}.timeline-step::before,.timeline-step::after{scale:1}.dream-environment{display:none}.hero-guide,.hero::before{translate:none!important}.motion-character>video{display:none}.motion-character.has-video>img{visibility:visible}.project-preview{display:none}.project-card:is(:hover,:focus-visible){scale:1;translate:none}.contact-guide.acknowledge{rotate:0deg;scale:1}}
+/* Entrance offsets must not create a horizontal scrollbar on narrow screens. */
+body{overflow-x:clip}
+/* Supplied static artwork; keep its original proportions. */
+.contact-portrait .motion-character{aspect-ratio:1626/1783}
+.skill-card:hover .skill-icon{animation:none;filter:none;transform:rotate(65deg) scale(1.06)}
+@media(max-width:600px){.project-third{margin-top:155px}.projects-grid{padding-top:25px}}
+/* Fixed hero character and centered portrait composition. */
+.hero-guide{translate:none;transition:none}
+.hero-guide>img{animation:none!important;translate:none;rotate:none}
+.hero-heart{left:80%;right:auto;top:23%;transform:translateX(-50%)}
+.profile-portrait{transform:none;margin:14px auto 18px;overflow:visible}
+.profile-portrait img{border-radius:26px;clip-path:inset(0 0 0 0 round 26px)}
+.profile-portrait::before,.profile-portrait::after{content:'';position:absolute;width:30px;height:30px;background:url('assets/star.webp') center/contain no-repeat;top:40%;z-index:2;pointer-events:none}
+.profile-portrait::before{left:-34px;transform:rotate(-16deg)}
+.profile-portrait::after{right:-34px;top:62%;width:23px;height:23px;transform:rotate(18deg)}
+@media(max-width:1150px) and (min-width:601px){.profile-portrait{width:145px}.profile-portrait::before{left:-23px;width:22px;height:22px}.profile-portrait::after{right:-23px;width:19px;height:19px}}
+@media(max-width:600px){.hero-heart{left:76%;top:17%;right:auto}.profile-portrait{margin:18px auto}.works-character{max-width:70%}}
+.profile-portrait{overflow:hidden}
+.profile-portrait::before,.profile-portrait::after{content:none}
+.profile::before,.profile::after{content:'';position:absolute;width:26px;height:26px;background:url('assets/star.webp') center/contain no-repeat;top:85px;pointer-events:none}
+.profile::before{left:calc(50% - 125px);transform:rotate(-16deg)}
+.profile::after{right:calc(50% - 123px);top:125px;width:21px;height:21px;transform:rotate(18deg)}
+@media(max-width:1150px) and (min-width:601px){.profile::before{left:5px;width:20px;height:20px}.profile::after{right:5px;width:18px;height:18px}.profile-portrait img{left:50%;transform:translateX(-50%)}}
+/* Square biography portrait, preserving centered layout at every breakpoint. */
+.profile-portrait{height:auto;aspect-ratio:1 / 1}
+/* Show the whole portrait rather than cropping the face at narrow widths. */
+.profile-portrait img{inset:0;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center;transform:none;clip-path:none}
+.works-heart,.works-star{z-index:4;pointer-events:none}
+@media(max-width:600px){.works-heart{width:22px}.works-star{width:28px}}
+/* Shoulder-and-neck portrait crop, centered within the square frame. */
+.profile-portrait img{inset:auto;left:55%;top:-4%;width:170%;height:auto;max-width:none;object-fit:contain;transform:translateX(-50%)}
+

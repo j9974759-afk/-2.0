@@ -1,0 +1,15 @@
+/* Editorial rhythm: large type first, images and content follow. */
+.section>.section-heading{position:relative;inset:auto;margin:0 0 42px}
+.section-heading .eyebrow{font-family:Arial,sans-serif;font-weight:800;font-size:clamp(30px,5.25vw,76px);opacity:.5;line-height:1.03;letter-spacing:-.065em;color:#8b9dcb;margin:0 0 18px}
+.section-heading h2{font-size:clamp(25px,2.5vw,36px)}
+.about .profile{margin-top:0}.section{padding-top:90px}
+.works>.section-heading{margin-bottom:45px}.skills>.section-heading{margin-bottom:35px}
+.editorial-word-mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.10em .035em .12em;margin:-.10em -.035em -.12em}
+.editorial-word{display:inline-block;transform-origin:50% 100%}
+.dream-invitation h1{overflow:visible}
+.project-image{overflow:hidden}.project-image>img{will-change:auto}
+.editorial-entering{transition:none!important;will-change:translate,clip-path}
+@media(max-width:700px){.section{padding-top:64px}.section-heading .eyebrow{font-size:clamp(26px,6.3vw,44px);letter-spacing:-.06em}.section>.section-heading{margin-bottom:28px}.works>.section-heading{margin-bottom:30px}}
+@media(prefers-reduced-motion:reduce){.editorial-word{transform:none!important}.editorial-entering{will-change:auto}}
+
+.hero-type>span{display:inline-block}

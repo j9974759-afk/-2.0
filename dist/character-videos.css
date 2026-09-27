@@ -1,0 +1,8 @@
+.works-guide.motion-character { aspect-ratio: 4 / 3; }
+.motion-character > .ip-animation { background: transparent; }
+.hero-guide.has-video { filter: none; }
+.hero-guide > .ip-animation,
+.skills-guide > .ip-animation { filter: url("#home-ip-clean-edge"); }
+/* Keep the authored motion free of the older procedural character animation. */
+.hero-guide.in-scene > .ip-animation,
+.skills-guide.in-scene.has-video > .ip-animation { animation: none; }

@@ -1,0 +1,35 @@
+/* React Bits SpotlightCard, adapted to the portfolio's light cards.
+   A separate layer preserves BorderGlow and the profile's decorations. */
+.card-spotlight {
+  position: relative;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: #fde4ff;
+}
+.card-spotlight > .spotlight-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.card-spotlight:focus-within > .spotlight-layer { opacity: .6; }
+.skills .skill-card {
+  transition: transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-spotlight:hover > .spotlight-layer { opacity: .6; }
+  .skills .skill-card:hover {
+    transform: translate3d(0, -8px, .01px);
+    box-shadow: 0 18px 36px rgba(133, 151, 198, .22), 0 5px 12px rgba(194, 160, 213, .12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-spotlight > .spotlight-layer { transition: none; }
+  .skills .skill-card { transition: none; }
+  .skills .skill-card:hover { transform: none; }
+}
+

@@ -1,0 +1,25 @@
+/* Scoped ProfileCard layers; the existing portrait crop stays intact. */
+.profile-portrait.portrait-pc {
+  --pc-x:50%; --pc-y:50%; --pc-rx:0deg; --pc-ry:0deg; --pc-avatar-x:0px;
+  perspective:600px; overflow:visible; background:none; border-color:transparent;
+}
+.profile-portrait.portrait-pc::before {content:none}
+.portrait-pc-card {
+  position:absolute; inset:0; overflow:hidden; border-radius:inherit; isolation:isolate;
+  background:linear-gradient(145deg,#efe5ff,#e7f4ff 60%,#fde4ff);
+  border:1px solid #e3eaff; backface-visibility:hidden;
+  transform:rotateX(var(--pc-rx)) rotateY(var(--pc-ry));
+  box-shadow:0 3px 12px #7d9bd00a; transition:box-shadow .45s ease;
+}
+.pc-active .portrait-pc-card {box-shadow:0 14px 28px -12px #829ad56b}
+.portrait-pc .portrait-pc-card img {transform:translateX(calc(-50% + var(--pc-avatar-x)));pointer-events:none}
+.portrait-pc-shine,.portrait-pc-glare {position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s ease}
+.portrait-pc-shine {
+  z-index:2; mix-blend-mode:soft-light;
+  background-image:repeating-linear-gradient(0deg,#ffb8dc 5%,#ffefb8 10%,#b7f7e7 15%,#b6eaff 20%,#b9bcff 25%,#ebbdff 30%,#ffb8dc 35%),repeating-linear-gradient(-45deg,#a6b3d1 0%,#fff 4%,#becce4 5%,#a6b3d1 12%);
+  background-size:500% 500%,300% 300%;background-position:0 var(--pc-y),var(--pc-x) var(--pc-y);background-blend-mode:color,hard-light;
+}
+.portrait-pc-glare {z-index:3;background:radial-gradient(farthest-corner circle at var(--pc-x) var(--pc-y),#ffffffa8 0%,#fde4ff30 38%,transparent 75%)}
+.pc-active .portrait-pc-shine{opacity:.65}
+.pc-active .portrait-pc-glare{opacity:.5}
+@media(prefers-reduced-motion:reduce){.portrait-pc-card{transform:none}.portrait-pc::before,.portrait-pc-shine,.portrait-pc-glare{display:none}}

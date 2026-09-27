@@ -1,0 +1,10 @@
+{
+  "name": "jinjin-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check dist/app.js && node --check dist/motion.js && node --check dist/landing.js && node --check dist/editorial-motion.js && node --check dist/aurora.js && node --check dist/border-glow.js && node --check dist/bounce-cards.js && node --check dist/rubber-nav.js && node --check dist/spotlight-card.js && node --check dist/character-videos.js && node --check dist/timeline-motion.js"
+  }
+}

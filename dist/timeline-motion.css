@@ -1,0 +1,20 @@
+/* Nodes and connectors have an independent, strictly ordered entrance. */
+.experience-item.experience-staged { padding:0; background:transparent; }
+.experience-surface {
+  position:relative; border-radius:inherit; padding:17px 22px;
+  background:linear-gradient(100deg,#f8faff,#edf3fc99);
+  opacity:0; transform:translate3d(0,96px,0) scale(.9); transform-origin:50% 50%;
+}
+.experience-surface.has-entered { opacity:1; transform:none; }
+@media(max-width:800px) { .experience-surface { padding:14px 17px; } }
+@media(max-width:600px) { .experience-surface { padding:17px 18px; } }
+.experience-item.timeline-prepared::before { scale: 0; transform-origin: center; }
+.experience-item.timeline-prepared::after { scale: 1 0; transform-origin: top; bottom: -28px; }
+@media (max-width:600px) {
+  .experience-item.timeline-prepared::after { bottom: -23px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .experience-surface { opacity:1; transform:none; }
+  .experience-item.timeline-prepared::before,
+  .experience-item.timeline-prepared::after { scale: 1 !important; }
+}

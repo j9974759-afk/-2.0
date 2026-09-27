@@ -1,0 +1,17 @@
+/* BounceCards interaction adapted to the existing project collage. */
+.projects-grid .project-card {
+  translate: var(--bounce-push, 0px) var(--bounce-push-y, 0px);
+  transform-origin: center;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1),
+    translate .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
+  transition-delay: var(--bounce-delay, 0ms);
+}
+.projects-grid .project-card:is(:hover,:focus-visible) {
+  transform: rotate(0deg);
+  scale: 1;
+  translate: 0 0;
+  z-index: 6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-grid .project-card { transition: none; translate: none; }
+}
